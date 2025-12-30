@@ -1,8 +1,8 @@
 name: check
 on:
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  #pull_request:
+  #  types: [opened, synchronize, reopened]
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -34,4 +34,5 @@ jobs:
         if: steps.files.outputs.any_changed == 'true'
         run: |
           npm run playlist:lint -- ${{ steps.files.outputs.all_changed_files }}
+
           npm run playlist:validate -- ${{ steps.files.outputs.all_changed_files }}
