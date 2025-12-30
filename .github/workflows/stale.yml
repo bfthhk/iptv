@@ -1,8 +1,8 @@
 name: stale
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
+  #schedule:
+  #  - cron: '0 0 * * *'
 permissions:
   actions: write
   issues: write
@@ -23,4 +23,5 @@ jobs:
           operations-per-run: 500
           stale-issue-label: 'stale'
           any-of-issue-labels: 'channel search'
+
           close-issue-message: 'This request has been closed because it has been inactive for more than 180 days.'
